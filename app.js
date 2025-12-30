@@ -17,7 +17,7 @@ const endText = document.getElementById("endText");
 let score = 0;
 let timeLeft = 10;
 let pointValue = 10;
-let blackTiles = new Set();
+let blackTiles = /* new */ []; /*Alp: Should we use a hashset or map?*/
 let gameActive = false;
 let pointIntervalId = null;
 const endHiScoreEl = document.getElementById("endHiScore");
@@ -170,7 +170,7 @@ setTimeout(() => {
 }
 
 
-/* timer*/
+/* timer (Time goes down from 10 to 0)*/
 function startTimer() {
   timeLeft = 10;
   timeEl.textContent = timeLeft;
@@ -186,7 +186,11 @@ function startTimer() {
   }, 1000);
 }
 
-/* end*/
+/* end (
+(5Pts) “F5 to play again” text with CSS animation appears
+b. (5Pts) “Time is up” text message (no hiscore case)
+c. (5Pts) “New HiScore” text appears (hiscore case)
+d. (5Pts) A confetti plays for three seconds (hiscore case))*/
 function endGame() {
   gameActive = false;
   game.classList.remove("active");

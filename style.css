@@ -125,3 +125,14 @@ h1 {
   50% { opacity: 0 }
   100% { opacity: 1 }
 }
+
+
+
+/* Alp: I wanted the colors to be similar to the guide */
+#score {
+  color: #49e469;
+}
+
+#time {
+  color: #ff535a;
+}
