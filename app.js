@@ -119,8 +119,8 @@ if (!cell.classList.contains("cell")) return;
   if (!blackTiles.includes(idx)) return;
 
   blackTiles = blackTiles.filter(i => i !== idx);
-
-  const earned = Math.max(1, pointValue);
+  /*Alp: I fixed this part it should be 0 instead of 1, the player must get no points if the time exceeds*/ 
+  const earned = Math.max(0, pointValue);
 
   cell.className = "cell hit";
   cell.textContent = `+${earned}`;
@@ -140,16 +140,16 @@ if (!cell.classList.contains("cell")) return;
 
 /* pointBAr*/
 function resetPointBar() {
-  // Eski interval varsa kapat (asıl fix bu)
+  // eski interval varsa kapat (asıl fix bu)
   if (pointIntervalId !== null) {
     clearInterval(pointIntervalId);
     pointIntervalId = null;
   }
 
-  // Puanı sıfırla
+  // puanı sıfırla
   pointValue = 10;
 
-  // Barı resetle (100% -> 0% animasyon)
+  // barı resetle (100% -> 0% animasyon)
  pointFill.style.transition = "none";
 pointFill.style.width = "100%";
 
@@ -159,7 +159,7 @@ setTimeout(() => {
 }, 10);
 
 
-  // Puan düşüşünü başlat
+  // puan düşüşünü başlat
   pointIntervalId = setInterval(() => {
     pointValue = Math.max(0, pointValue - 1);
     if (!gameActive || pointValue === 0) {
@@ -170,7 +170,7 @@ setTimeout(() => {
 }
 
 
-/* ---------- Timer ---------- */
+/* timer*/
 function startTimer() {
   timeLeft = 10;
   timeEl.textContent = timeLeft;
@@ -186,7 +186,7 @@ function startTimer() {
   }, 1000);
 }
 
-/* ---------- End ---------- */
+/* end*/
 function endGame() {
   gameActive = false;
   game.classList.remove("active");
@@ -204,7 +204,7 @@ function endGame() {
   hiscoreEl.textContent = hiscore;
 }
 
-/* ---------- Confetti ---------- */
+/* confetti*/
 function launchConfetti() {
   const end = Date.now() + 3000;
   const interval = setInterval(() => {
