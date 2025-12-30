@@ -41,8 +41,21 @@ h1 {
 /* Game */
 .top {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   font-weight: 600;
+  align-items: flex-start; /*Alp: Everythings upper should be in the same alignment bcz we changed the font sizes */
+  /* border: 3px solid red */;
+}
+
+.top > div{ /*Alp: Just wanted some gap  between names and stat variables */
+ display: flex;        
+  flex-direction: column;
+  gap: 6px;  
+}
+.top span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .info {
@@ -131,8 +144,10 @@ h1 {
 /* Alp: I wanted the colors to be similar to the guide */
 #score {
   color: #49e469;
+  font-size: 3em; 
 }
 
 #time {
-  color: #ff535a;
+  color:  #ff535a;
+  font-size: 2em; 
 }
